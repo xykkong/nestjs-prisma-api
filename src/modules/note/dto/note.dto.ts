@@ -15,7 +15,6 @@ export class NoteDto {
   userId?: number;
 }
 
-
 export const CreateNoteSchema = Joi.object({
   title: Joi.string().max(100).required(),
   body: Joi.string().required(),

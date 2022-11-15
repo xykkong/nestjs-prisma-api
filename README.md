@@ -13,16 +13,16 @@ docker-compose build
 docker-compose up
 ```
 
-If this is your first time running the project, you will need to create your local database (before docker-compose up).
+If this is your first time running the project, you will need initialize your database (after docker-compose up).
 
-````bash
+```bash
 docker-compose run api pnpm run db:init
-````
+```
 
 ### Stop container
 ```bash
 docker-compose down
-````
+```
 
 ## Running Locally
 

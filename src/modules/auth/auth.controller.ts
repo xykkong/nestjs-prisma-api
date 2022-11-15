@@ -1,4 +1,11 @@
-import { Controller, Post, Request, UseGuards, Body, BadRequestException } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Request,
+  UseGuards,
+  Body,
+  BadRequestException,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from '../../guards';
 import { SignUpDto } from './dto';
@@ -11,7 +18,10 @@ import { UserNotFoundError } from '../user/exception/user.error';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+  ) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('signin')
@@ -20,12 +30,13 @@ export class AuthController {
   }
 
   @Post('signup')
-  async signUp(
-    @Body() userData: SignUpDto,
-  ) {
+  async signUp(@Body() userData: SignUpDto) {
     try {
-      const user = await this.userService.create({ ...userData, profile: "user" });
-      return { ...user, id: undefined }
+      const user = await this.userService.create({
+        ...userData,
+        profile: 'user',
+      });
+      return { ...user, id: undefined };
     } catch (e: any) {
       if (e instanceof UserNotFoundError)
         return new UserAlreadyExistException(userData.email);

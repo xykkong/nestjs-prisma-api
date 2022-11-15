@@ -5,20 +5,18 @@ import { NoteDto } from './dto/note.dto';
 
 @Injectable()
 export class NoteService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async listAll(): Promise<Note[]> {
     return this.prisma.note.findMany();
   }
 
   async listByUser(userId: number): Promise<Note[]> {
-    console.log(userId)
+    console.log(userId);
     return this.prisma.note.findMany({ where: { userId } });
   }
 
-  async find(
-    id: string, userId: number,
-  ): Promise<Note | null> {
+  async find(id: string, userId: number): Promise<Note | null> {
     return this.prisma.note.findFirst({
       where: { id, userId },
     });
@@ -33,9 +31,9 @@ export class NoteService {
         user: {
           connect: {
             id: userId,
-          }
-        }
-      }
+          },
+        },
+      },
     });
   }
 

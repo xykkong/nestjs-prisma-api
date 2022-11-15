@@ -17,4 +17,3 @@ export class CreateNoteValidatorPipe implements PipeTransform<CreateNoteDto> {
     return value;
   }
 }
-

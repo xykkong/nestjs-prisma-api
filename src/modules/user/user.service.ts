@@ -3,13 +3,16 @@ import { generateHash, validateHash } from '../../commons';
 import { Prisma, PrismaService } from '../../providers';
 import { UserDto } from './dto';
 import { UserAlreadyExistException } from './exception';
-import { UserNotFoundError, UserPassowordNotMatchError } from './exception/user.error';
+import {
+  UserNotFoundError,
+  UserPassowordNotMatchError,
+} from './exception/user.error';
 
 export type User = any;
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async list(params: {
     skip?: number;
