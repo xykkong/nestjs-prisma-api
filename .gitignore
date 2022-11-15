@@ -5,8 +5,6 @@
 prisma/*.db
 .pnpm-store/*
 
-.env
-
 # Logs
 logs
 *.log
